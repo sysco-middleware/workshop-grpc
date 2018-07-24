@@ -1,0 +1,59 @@
+// variables
+ext { grpcVersion = '1.7.0' }
+
+// project coordinates
+group = "no.sysco.middleware.workshops"
+version = "1.0-SNAPSHOT"
+
+// Add plugin dependency before applying the plugin
+buildscript {
+  repositories { mavenCentral() }
+  dependencies { classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.6' }
+}
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+
+// java plugin compile, runtime configs
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+sourceSets {
+  main {
+    java {}  // default 'src/main/java'
+    proto {} // default 'src/main/proto'
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.10'
+  compile "com.google.api.grpc:proto-google-common-protos:1.0.0"
+  compile "io.grpc:grpc-protobuf:${grpcVersion}"
+  compile "io.grpc:grpc-stub:${grpcVersion}"
+  compile "io.grpc:grpc-netty:${grpcVersion}"
+}
+
+// Add protobuf tasks
+protobuf {
+  protoc {
+    artifact = 'com.google.protobuf:protoc:3.4.0'
+  }
+  plugins {
+    grpc {
+      artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+    }
+  }
+  generatedFilesBaseDir = "${projectDir}/src/"
+  generateProtoTasks {
+    all().each { t ->
+      t.plugins {
+        // the generated code from grpc task should be placed under ${generatedFileBaseDir}/src/java
+        grpc { outputSubDir = 'java' }
+      }
+    }
+  }
+}
