@@ -19,7 +19,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.7.0)",
-    comments = "Source: Invoice.proto")
+    comments = "Source: invoice.proto")
 public final class InvoiceServiceGrpc {
 
   private InvoiceServiceGrpc() {}

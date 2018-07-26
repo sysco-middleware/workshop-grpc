@@ -30,28 +30,31 @@ repositories {
 }
 
 dependencies {
-  testCompile group: 'junit', name: 'junit', version: '4.10'
+  testCompile group: 'junit', name: 'junit', version: '4.12'
   compile "com.google.api.grpc:proto-google-common-protos:1.0.0"
   compile "io.grpc:grpc-protobuf:${grpcVersion}"
   compile "io.grpc:grpc-stub:${grpcVersion}"
   compile "io.grpc:grpc-netty:${grpcVersion}"
 }
 
-// Add protobuf tasks
+// Configure protobuf tasks
 protobuf {
+  // Use the below binary to compile protobuf to java
   protoc {
     artifact = 'com.google.protobuf:protoc:3.4.0'
   }
   plugins {
+    // binary location for the grpc plugin
     grpc {
       artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
     }
   }
+  // directory where the generated file will be created
   generatedFilesBaseDir = "${projectDir}/src/"
   generateProtoTasks {
     all().each { t ->
       t.plugins {
-        // the generated code from grpc task should be placed under ${generatedFileBaseDir}/src/java
+        // subdirectory under generatedFilesBaseDir path where files should be generated
         grpc { outputSubDir = 'java' }
       }
     }
