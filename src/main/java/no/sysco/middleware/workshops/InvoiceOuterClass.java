@@ -3348,20 +3348,22 @@ public final class InvoiceOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rinvoice.proto\"P\n\007Invoice\022\n\n\002id\030\001 \001(\t\022\016" +
-      "\n\006amount\030\002 \001(\002\022\022\n\ncustomerId\030\003 \001(\t\022\025\n\005st" +
-      "ate\030\004 \001(\0162\006.State\"J\n\rCreateRequest\022\016\n\006am" +
-      "ount\030\001 \001(\002\022\022\n\ncustomerId\030\002 \001(\t\022\025\n\005state\030" +
-      "\003 \001(\0162\006.State\"\034\n\016InvoiceRequest\022\n\n\002id\030\001 " +
-      "\001(\t\"(\n\016DeleteResponse\022\n\n\002id\030\001 \001(\t\022\n\n\002ok\030" +
-      "\002 \001(\010\"+\n\rUpdateRequest\022\n\n\002id\030\001 \001(\t\022\016\n\006am" +
-      "ount\030\002 \001(\002*&\n\005State\022\007\n\003NEW\020\000\022\010\n\004PAID\020\001\022\n" +
-      "\n\006FAILED\020\0022\246\001\n\016InvoiceService\022\"\n\006Create\022" +
-      "\016.CreateRequest\032\010.Invoice\022 \n\003Get\022\017.Invoi",
-      "ceRequest\032\010.Invoice\022*\n\006Delete\022\017.InvoiceR" +
-      "equest\032\017.DeleteResponse\022\"\n\006Update\022\016.Upda" +
-      "teRequest\032\010.InvoiceB\037\n\035no.sysco.middlewa" +
-      "re.workshopsb\006proto3"
+      "\n\rinvoice.proto\032\033google/protobuf/empty.p" +
+      "roto\"P\n\007Invoice\022\n\n\002id\030\001 \001(\t\022\016\n\006amount\030\002 " +
+      "\001(\002\022\022\n\ncustomerId\030\003 \001(\t\022\025\n\005state\030\004 \001(\0162\006" +
+      ".State\"J\n\rCreateRequest\022\016\n\006amount\030\001 \001(\002\022" +
+      "\022\n\ncustomerId\030\002 \001(\t\022\025\n\005state\030\003 \001(\0162\006.Sta" +
+      "te\"\034\n\016InvoiceRequest\022\n\n\002id\030\001 \001(\t\"(\n\016Dele" +
+      "teResponse\022\n\n\002id\030\001 \001(\t\022\n\n\002ok\030\002 \001(\010\"+\n\rUp" +
+      "dateRequest\022\n\n\002id\030\001 \001(\t\022\016\n\006amount\030\002 \001(\002*" +
+      "&\n\005State\022\007\n\003NEW\020\000\022\010\n\004PAID\020\001\022\n\n\006FAILED\020\0022" +
+      "\322\001\n\016InvoiceService\022\"\n\006Create\022\016.CreateReq",
+      "uest\032\010.Invoice\022 \n\003Get\022\017.InvoiceRequest\032\010" +
+      ".Invoice\022*\n\006Delete\022\017.InvoiceRequest\032\017.De" +
+      "leteResponse\022\"\n\006Update\022\016.UpdateRequest\032\010" +
+      ".Invoice\022*\n\004List\022\026.google.protobuf.Empty" +
+      "\032\010.Invoice0\001B\037\n\035no.sysco.middleware.work" +
+      "shopsb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3374,6 +3376,7 @@ public final class InvoiceOuterClass {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.EmptyProto.getDescriptor(),
         }, assigner);
     internal_static_Invoice_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -3405,6 +3408,7 @@ public final class InvoiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UpdateRequest_descriptor,
         new java.lang.String[] { "Id", "Amount", });
+    com.google.protobuf.EmptyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

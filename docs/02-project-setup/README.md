@@ -1,7 +1,7 @@
 # Project setup
 [HOME](../../README.md)
 
-gRPC project should be able to achieve following objectives:
+Common tasks required in gRPC project are:
 - Read .proto files as payload and service definition.
 - Convert .proto files to target language. Java in our case.
 - Correct package and directory location for generated code.

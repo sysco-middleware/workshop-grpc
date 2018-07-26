@@ -79,6 +79,19 @@ public final class InvoiceServiceGrpc {
               no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
           .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Update"))
           .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> METHOD_LIST =
+      io.grpc.MethodDescriptor.<com.google.protobuf.Empty, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "InvoiceService", "List"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.google.protobuf.Empty.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
+          .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("List"))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -135,6 +148,13 @@ public final class InvoiceServiceGrpc {
       asyncUnimplementedUnaryCall(METHOD_UPDATE, responseObserver);
     }
 
+    /**
+     */
+    public void list(com.google.protobuf.Empty request,
+        io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_LIST, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -165,6 +185,13 @@ public final class InvoiceServiceGrpc {
                 no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest,
                 no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>(
                   this, METHODID_UPDATE)))
+          .addMethod(
+            METHOD_LIST,
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                com.google.protobuf.Empty,
+                no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>(
+                  this, METHODID_LIST)))
           .build();
     }
   }
@@ -218,6 +245,14 @@ public final class InvoiceServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_UPDATE, getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void list(com.google.protobuf.Empty request,
+        io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(METHOD_LIST, getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -264,6 +299,14 @@ public final class InvoiceServiceGrpc {
     public no.sysco.middleware.workshops.InvoiceOuterClass.Invoice update(no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_UPDATE, getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> list(
+        com.google.protobuf.Empty request) {
+      return blockingServerStreamingCall(
+          getChannel(), METHOD_LIST, getCallOptions(), request);
     }
   }
 
@@ -322,6 +365,7 @@ public final class InvoiceServiceGrpc {
   private static final int METHODID_GET = 1;
   private static final int METHODID_DELETE = 2;
   private static final int METHODID_UPDATE = 3;
+  private static final int METHODID_LIST = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -354,6 +398,10 @@ public final class InvoiceServiceGrpc {
           break;
         case METHODID_UPDATE:
           serviceImpl.update((no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest) request,
+              (io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>) responseObserver);
+          break;
+        case METHODID_LIST:
+          serviceImpl.list((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>) responseObserver);
           break;
         default:
@@ -421,6 +469,7 @@ public final class InvoiceServiceGrpc {
               .addMethod(METHOD_GET)
               .addMethod(METHOD_DELETE)
               .addMethod(METHOD_UPDATE)
+              .addMethod(METHOD_LIST)
               .build();
         }
       }
