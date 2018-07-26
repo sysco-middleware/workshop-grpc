@@ -26,10 +26,10 @@ We start with creating a simple project structure.
 ![ProjectStructure](../images/ProjectStr.png)
 
 ## Gradle settings
-All our configuration are done in [build.gradle](../../build.gradle) shipped with this code repo.
+All our configuration are done in [build.gradle](../../build.gradle) shipped with this code repo. Use that as reference for gRPC project setup. Comments are provided in the build file wherever required. If you are new to gradle you can follow the explaination below to under gradle settings in more detail and understand what is happening under the hood.
 
 ### Configure project coordinates and variables
-We start with defining a variable grpcVersion, we will reuse this later while defining project dependencies. Then we define the project coordinates. These will be useful when we want to distribute the executable via artifactory for example
+We start with defining a variable grpcVersion, we will reuse this later while defining project dependencies. Next, we define the project coordinates. These will be useful when we want to distribute the executable via artifactory for example
 ```groovy
 // variables
 ext { grpcVersion = '1.7.0' }
