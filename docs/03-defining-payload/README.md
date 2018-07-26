@@ -1,4 +1,5 @@
 # Payload and service definition.
+[HOME](../../README.md)
 
 Defining payload an services in gRPC is extremely easy. We will start with defining the payload, which represent strongly typed requests and responses for methods exposed by rpc Service. The payload is represented in protobuf format and is called a `message`.
 
@@ -36,7 +37,7 @@ Source: [protobuf](https://developers.google.com/protocol-buffers/docs/proto3)
 
 Refer to [invoice.proto](../../src/main/proto/invoice.proto) for the complete reference.
 
-We start by defining the payload for our application
+We start by defining the payload for our application. Create a file **invoice.proto** under the directory **src/main/proto** and add the below content.
 ```
 syntax = "proto3";
 import "google/protobuf/empty.proto";
@@ -76,7 +77,7 @@ Note above that we have defined an enum called State. This means that an invoice
 Also notice that we have `option` field to define java package. There are other such options available which you can reference [here](https://developers.google.com/protocol-buffers/docs/proto3#options).
 
 ### Defining Service
-Lets define the service and the methods our api supports
+Lets define the service and the methods our api supports. At the end of the **invoice.proto** file, add the below content.
 ```
 service InvoiceService {
     rpc Create (CreateRequest) returns (Invoice);
@@ -86,6 +87,8 @@ service InvoiceService {
     rpc List(google.protobuf.Empty) returns(stream Invoice);
 }
 ```
-Here first four methods are `synchronous` blocking operations, while the last method is streaming operation. Also note that input type for List operation is Empty which is a way to represent void in protobuf.
+We first start with defining the name for our service which is **InvoiceService** in our case. Next we add five operations called **Create**,**Get**,**Delete**,**Update** and **List**.
+
+Here first four methods are `synchronous` blocking operations, while the last method is streaming operation. Also note that input type for List operation is Empty which is a way to represent void in protobuf. This method does not expect any input but would return stream of invoices to the client.
 
 [Next](../04-code-generation/README.md) we will look into code generation from our .proto files 
