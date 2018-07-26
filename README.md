@@ -16,7 +16,7 @@ In addition, its based on HTTP/2 protocol which provides performance gains along
 
 This makes gRPC a very good candidate for creating microservices. It also has a lot of support for cloud, being a part of Cloud Native project and works seamlessly on container orchestration frameworks like kubernetes. 
 
-If you are used to building microservices using REST + JSON, transition to gRPC would feel like a next natural progression.
+If you are used to building microservices using REST + JSON, transition to gRPC would feel like a next natural progression. Moreover, ability to implement the framework in your preferred programming language makes it an excellent choice for modern application development.
 
 To build REST apis, we use something like:
 ```
@@ -33,7 +33,7 @@ While both approaches are used to serve client-server communication, there are f
 - gRPC has inbuilt support for security using (SSL/TLS)
 - gRPC provides more flexibility on the types of operations client can perform on  server. This is different from REST which strictly encourages to use only CRUD operations on the object.
 
-In this workshop we will work from scratch to develop a working prototype that simulates a <>. Go through the sections below in sequence to understand the problem statement and step-by-step process to setup a gRPC project.
+In this workshop we will work from scratch to develop a working prototype for an Invoice generation System. Follow the docs below in sequence to read the problem statement and step-by-step process to implement a gRPC project.
 1. [Problem statement](./docs/01-problem-statement/README.md)
 2. [Project setup](./docs/02-project-setup/README.md)
 3. [Defining payload and services](./docs/03-defining-payload/README.md)

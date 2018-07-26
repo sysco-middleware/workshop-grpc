@@ -7,7 +7,9 @@ version = "1.0-SNAPSHOT"
 
 // Add plugin dependency before applying the plugin
 buildscript {
-  repositories { mavenCentral() }
+  // repositories { mavenCentral() }
+  // The google mirror is less flaky than mavenCentral()
+  repositories { maven { url "https://maven-central.storage-download.googleapis.com/repos/central/data/" } }
   dependencies { classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.6' }
 }
 apply plugin: 'java'
@@ -16,25 +18,23 @@ apply plugin: 'com.google.protobuf'
 // java plugin compile, runtime configs
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-
 sourceSets {
   main {
+    // define additional source locations here for java and proto files
     java {}  // default 'src/main/java'
     proto {} // default 'src/main/proto'
   }
 }
 
-repositories {
-  mavenCentral()
-}
-
+// Project dependencies
+repositories { jcenter() }
 dependencies {
-  testCompile group: 'junit', name: 'junit', version: '4.12'
+  testCompile 'junit:junit:4.12'
   compile "com.google.api.grpc:proto-google-common-protos:1.0.0"
   compile "io.grpc:grpc-protobuf:${grpcVersion}"
   compile "io.grpc:grpc-stub:${grpcVersion}"
   compile "io.grpc:grpc-netty:${grpcVersion}"
+  compile "ch.qos.logback:logback-classic:1.2.3"
 }
 
 // Configure protobuf tasks
