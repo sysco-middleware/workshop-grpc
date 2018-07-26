@@ -3,7 +3,8 @@ This repository is setup to provide a basic understanding of the gRPC protocol a
 
 ## Goals
 - Introduction to gRPC protocol.
-- Setting up a gradle project for grpc.
+- Project setup for gRPC using gradle.
+- Basic understanding of protocol buffers.
 - Code generation in gRPC projects.
 - Client-Server implementations.
 - Unit testing gRPC applications.

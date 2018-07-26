@@ -1,9 +1,18 @@
 # Project setup
+[HOME](../../README.md)
 
-We will start with creating a gradle setup for this project. Gradle will help us to achieve following objectives:
-- Manage java and protobuf/grpc dependencies.
-- Download protoc compiler.
-- Configure the directory for code generation.
+gRPC project should be able to achieve following objectives:
+- Read .proto files as payload and service definition.
+- Convert .proto files to target language. Java in our case.
+- Correct package and directory location for generated code.
+- Add generated code to source sets. This will ensure that compile and build phases find generated classes.
+- If we intend to distribute the application. These compiled classes should be added to the distribution.
+
+One way to achieve this by using **protoc** compiler which is available as binary. For this project we will configure gradle to do these tasks for us. Gradle will help us to achieve following objectives:
+- Manage java and grpc dependencies.
+- Configure protoc compiler.
+- Configure code generation.
+- Configure compile and runtime phases.
 - Act as reusable template for other gRPC projects.
 
 ## Project structure
@@ -12,9 +21,8 @@ We start with creating a simple project structure.
 - We will define our protobuf description under `src/main/proto`.
 - All generated code will be placed under `src/main/java/no/sysco/middleware/workshops`. We will configure gradle to do this automatically for us in build.gradle configurations
 - All custom implementation for client-server wil be under `src/main/java/impl`
-- All test cases will be under `src/test/java
+- All test cases will be under `src/test/java`
 
-`
 ![ProjectStructure](../images/ProjectStr.png)
 
 ## Gradle settings
