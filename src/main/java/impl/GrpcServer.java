@@ -13,6 +13,5 @@ public class GrpcServer {
         server.start();
         System.out.println("Server started");
         server.awaitTermination();
-
     }
 }

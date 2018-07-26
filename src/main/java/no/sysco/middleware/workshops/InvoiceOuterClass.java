@@ -2744,6 +2744,15 @@ public final class InvoiceOuterClass {
      * <code>float amount = 2;</code>
      */
     float getAmount();
+
+    /**
+     * <code>.State state = 3;</code>
+     */
+    int getStateValue();
+    /**
+     * <code>.State state = 3;</code>
+     */
+    no.sysco.middleware.workshops.InvoiceOuterClass.State getState();
   }
   /**
    * Protobuf type {@code UpdateRequest}
@@ -2760,6 +2769,7 @@ public final class InvoiceOuterClass {
     private UpdateRequest() {
       id_ = "";
       amount_ = 0F;
+      state_ = 0;
     }
 
     @java.lang.Override
@@ -2799,6 +2809,12 @@ public final class InvoiceOuterClass {
             case 21: {
 
               amount_ = input.readFloat();
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              state_ = rawValue;
               break;
             }
           }
@@ -2868,6 +2884,22 @@ public final class InvoiceOuterClass {
       return amount_;
     }
 
+    public static final int STATE_FIELD_NUMBER = 3;
+    private int state_;
+    /**
+     * <code>.State state = 3;</code>
+     */
+    public int getStateValue() {
+      return state_;
+    }
+    /**
+     * <code>.State state = 3;</code>
+     */
+    public no.sysco.middleware.workshops.InvoiceOuterClass.State getState() {
+      no.sysco.middleware.workshops.InvoiceOuterClass.State result = no.sysco.middleware.workshops.InvoiceOuterClass.State.valueOf(state_);
+      return result == null ? no.sysco.middleware.workshops.InvoiceOuterClass.State.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2886,6 +2918,9 @@ public final class InvoiceOuterClass {
       if (amount_ != 0F) {
         output.writeFloat(2, amount_);
       }
+      if (state_ != no.sysco.middleware.workshops.InvoiceOuterClass.State.NEW.getNumber()) {
+        output.writeEnum(3, state_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2900,6 +2935,10 @@ public final class InvoiceOuterClass {
       if (amount_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(2, amount_);
+      }
+      if (state_ != no.sysco.middleware.workshops.InvoiceOuterClass.State.NEW.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, state_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2923,6 +2962,7 @@ public final class InvoiceOuterClass {
           java.lang.Float.floatToIntBits(getAmount())
           == java.lang.Float.floatToIntBits(
               other.getAmount()));
+      result = result && state_ == other.state_;
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2939,6 +2979,8 @@ public final class InvoiceOuterClass {
       hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
       hash = (53 * hash) + java.lang.Float.floatToIntBits(
           getAmount());
+      hash = (37 * hash) + STATE_FIELD_NUMBER;
+      hash = (53 * hash) + state_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3072,6 +3114,8 @@ public final class InvoiceOuterClass {
 
         amount_ = 0F;
 
+        state_ = 0;
+
         return this;
       }
 
@@ -3096,6 +3140,7 @@ public final class InvoiceOuterClass {
         no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest result = new no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest(this);
         result.id_ = id_;
         result.amount_ = amount_;
+        result.state_ = state_;
         onBuilt();
         return result;
       }
@@ -3143,6 +3188,9 @@ public final class InvoiceOuterClass {
         }
         if (other.getAmount() != 0F) {
           setAmount(other.getAmount());
+        }
+        if (other.state_ != 0) {
+          setStateValue(other.getStateValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3265,6 +3313,50 @@ public final class InvoiceOuterClass {
         onChanged();
         return this;
       }
+
+      private int state_ = 0;
+      /**
+       * <code>.State state = 3;</code>
+       */
+      public int getStateValue() {
+        return state_;
+      }
+      /**
+       * <code>.State state = 3;</code>
+       */
+      public Builder setStateValue(int value) {
+        state_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.State state = 3;</code>
+       */
+      public no.sysco.middleware.workshops.InvoiceOuterClass.State getState() {
+        no.sysco.middleware.workshops.InvoiceOuterClass.State result = no.sysco.middleware.workshops.InvoiceOuterClass.State.valueOf(state_);
+        return result == null ? no.sysco.middleware.workshops.InvoiceOuterClass.State.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.State state = 3;</code>
+       */
+      public Builder setState(no.sysco.middleware.workshops.InvoiceOuterClass.State value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        state_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.State state = 3;</code>
+       */
+      public Builder clearState() {
+        
+        state_ = 0;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFieldsProto3(unknownFields);
@@ -3354,16 +3446,16 @@ public final class InvoiceOuterClass {
       ".State\"J\n\rCreateRequest\022\016\n\006amount\030\001 \001(\002\022" +
       "\022\n\ncustomerId\030\002 \001(\t\022\025\n\005state\030\003 \001(\0162\006.Sta" +
       "te\"\034\n\016InvoiceRequest\022\n\n\002id\030\001 \001(\t\"(\n\016Dele" +
-      "teResponse\022\n\n\002id\030\001 \001(\t\022\n\n\002ok\030\002 \001(\010\"+\n\rUp" +
-      "dateRequest\022\n\n\002id\030\001 \001(\t\022\016\n\006amount\030\002 \001(\002*" +
-      "&\n\005State\022\007\n\003NEW\020\000\022\010\n\004PAID\020\001\022\n\n\006FAILED\020\0022" +
-      "\322\001\n\016InvoiceService\022\"\n\006Create\022\016.CreateReq",
-      "uest\032\010.Invoice\022 \n\003Get\022\017.InvoiceRequest\032\010" +
-      ".Invoice\022*\n\006Delete\022\017.InvoiceRequest\032\017.De" +
-      "leteResponse\022\"\n\006Update\022\016.UpdateRequest\032\010" +
-      ".Invoice\022*\n\004List\022\026.google.protobuf.Empty" +
-      "\032\010.Invoice0\001B\037\n\035no.sysco.middleware.work" +
-      "shopsb\006proto3"
+      "teResponse\022\n\n\002id\030\001 \001(\t\022\n\n\002ok\030\002 \001(\010\"B\n\rUp" +
+      "dateRequest\022\n\n\002id\030\001 \001(\t\022\016\n\006amount\030\002 \001(\002\022" +
+      "\025\n\005state\030\003 \001(\0162\006.State*&\n\005State\022\007\n\003NEW\020\000" +
+      "\022\010\n\004PAID\020\001\022\n\n\006FAILED\020\0022\322\001\n\016InvoiceServic",
+      "e\022\"\n\006Create\022\016.CreateRequest\032\010.Invoice\022 \n" +
+      "\003Get\022\017.InvoiceRequest\032\010.Invoice\022*\n\006Delet" +
+      "e\022\017.InvoiceRequest\032\017.DeleteResponse\022\"\n\006U" +
+      "pdate\022\016.UpdateRequest\032\010.Invoice\022*\n\004List\022" +
+      "\026.google.protobuf.Empty\032\010.Invoice0\001B\037\n\035n" +
+      "o.sysco.middleware.workshopsb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3407,7 +3499,7 @@ public final class InvoiceOuterClass {
     internal_static_UpdateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UpdateRequest_descriptor,
-        new java.lang.String[] { "Id", "Amount", });
+        new java.lang.String[] { "Id", "Amount", "State", });
     com.google.protobuf.EmptyProto.getDescriptor();
   }
 

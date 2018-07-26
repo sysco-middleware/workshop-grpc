@@ -1,42 +1,72 @@
 package impl;
 
+import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import no.sysco.middleware.workshops.InvoiceOuterClass;
-import no.sysco.middleware.workshops.InvoiceServiceGrpc;
+import no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest;
+import no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse;
+import no.sysco.middleware.workshops.InvoiceOuterClass.Invoice;
+import no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest;
+import no.sysco.middleware.workshops.InvoiceServiceGrpc.InvoiceServiceImplBase;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
-import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-public final class InvoiceServiceImpl extends InvoiceServiceGrpc.InvoiceServiceImplBase {
+public final class InvoiceServiceImpl extends InvoiceServiceImplBase {
 
-    static Map<String, InvoiceOuterClass.Invoice> invoices = new HashMap<>();
-    static Logger logger = Logger.getLogger(InvoiceServiceImpl.class.getName());
+    private static Map<String, Invoice> store = new HashMap<>();
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(InvoiceServiceImpl.class);
+
+    public InvoiceServiceImpl() {
+        store = this.generateRandomInvoices();
+    }
+
+    // Add 5 new Invoices to the store
+    private Map<String, Invoice> generateRandomInvoices() {
+        Random r = new Random();
+        return IntStream.rangeClosed(1, 5).mapToObj(i -> Invoice.newBuilder()
+                .setAmount(r.nextFloat() * 100)
+                .setCustomerId(UUID.randomUUID().toString())
+                .setId(UUID.randomUUID().toString())
+                .setState(InvoiceOuterClass.State.NEW)
+                .build()).collect(Collectors.toMap(Invoice::getId, invoice -> invoice, (a, b) -> b));
+    }
 
     @Override
-    public void create(InvoiceOuterClass.CreateRequest request, StreamObserver<InvoiceOuterClass.Invoice> responseObserver) {
+    public void list(Empty request, StreamObserver<Invoice> responseObserver) {
+        logger.info(">>> list :: request :: {}", request.toString());
+        store.forEach((k, v) -> responseObserver.onNext(v));
+        responseObserver.onCompleted();
+    }
 
+    @Override
+    public void create(CreateRequest request, StreamObserver<Invoice> responseObserver) {
+        logger.info(">>> create :: request :: {}", request.toString());
         final String id = UUID.randomUUID().toString();
-        final InvoiceOuterClass.Invoice invoice = InvoiceOuterClass.Invoice.newBuilder()
+        final Invoice invoice = Invoice.newBuilder()
                 .setAmount(request.getAmount())
                 .setCustomerId(request.getCustomerId())
                 .setId(id)
                 .setState(InvoiceOuterClass.State.NEW)
                 .build();
-        invoices.put(id, invoice);
-        logger.info("Created invoice" + invoice.toString());
+        store.put(id, invoice);
+        logger.info(">>> create :: invoice :: \n{}", invoice.toString());
         responseObserver.onNext(invoice);
-
         responseObserver.onCompleted();
     }
 
     @Override
-    public void get(InvoiceOuterClass.InvoiceRequest request, StreamObserver<InvoiceOuterClass.Invoice> responseObserver) {
-        if (invoices != null && !invoices.isEmpty()) {
+    public void get(InvoiceRequest request, StreamObserver<Invoice> responseObserver) {
+        logger.info(">>> get :: request :: {}", request.toString());
+        if (store != null && !store.isEmpty()) {
             final String id = request.getId();
-            final InvoiceOuterClass.Invoice invoice = invoices.get(id);
-            logger.info("Getting invoice" + invoice.toString());
+            final Invoice invoice = store.get(id);
+            logger.info(">>> get :: invoice :: {}", invoice.toString());
             responseObserver.onNext(invoice);
         } else {
             responseObserver.onNext(null);
@@ -45,18 +75,19 @@ public final class InvoiceServiceImpl extends InvoiceServiceGrpc.InvoiceServiceI
     }
 
     @Override
-    public void delete(InvoiceOuterClass.InvoiceRequest request, StreamObserver<InvoiceOuterClass.DeleteResponse> responseObserver) {
-        if (invoices != null && !invoices.isEmpty()) {
-            final InvoiceOuterClass.Invoice invoice = invoices.get(request.getId());
-            invoices.remove(request.getId());
-            InvoiceOuterClass.DeleteResponse res = InvoiceOuterClass.DeleteResponse.newBuilder()
+    public void delete(InvoiceRequest request, StreamObserver<DeleteResponse> responseObserver) {
+        logger.info(">>> delete :: request :: {}", request.toString());
+        if (store != null && !store.isEmpty()) {
+            final Invoice invoice = store.get(request.getId());
+            store.remove(request.getId());
+            DeleteResponse res = DeleteResponse.newBuilder()
                     .setId(request.getId())
                     .setOk(true)
                     .build();
-            logger.info("Deleting invoice" + invoice.toString());
+            logger.info(">> deleted :: invoice :: {} ", invoice.toString());
             responseObserver.onNext(res);
         } else {
-            InvoiceOuterClass.DeleteResponse res = InvoiceOuterClass.DeleteResponse.newBuilder()
+            DeleteResponse res = DeleteResponse.newBuilder()
                     .setOk(false)
                     .setId(request.getId()).build();
             responseObserver.onNext(res);
@@ -65,16 +96,17 @@ public final class InvoiceServiceImpl extends InvoiceServiceGrpc.InvoiceServiceI
     }
 
     @Override
-    public void update(InvoiceOuterClass.UpdateRequest request, StreamObserver<InvoiceOuterClass.Invoice> responseObserver) {
-        if (invoices != null && !invoices.isEmpty()) {
-            final InvoiceOuterClass.Invoice invoice = invoices.get(request.getId());
-            final InvoiceOuterClass.Invoice newInvoice = InvoiceOuterClass.Invoice.newBuilder().
+    public void update(InvoiceOuterClass.UpdateRequest request, StreamObserver<Invoice> responseObserver) {
+        logger.info(">>> update :: request :: {}", request.toString());
+        if (store != null && !store.isEmpty()) {
+            final Invoice invoice = store.get(request.getId());
+            final Invoice newInvoice = Invoice.newBuilder().
                     setAmount(request.getAmount()).
                     setCustomerId(invoice.getCustomerId()).
                     setState(invoice.getState())
                     .setId(request.getId()).build();
-            invoices.replace(request.getId(), newInvoice);
-            logger.info("Updating invoice" + newInvoice.toString());
+            store.replace(request.getId(), newInvoice);
+            logger.info(">>> updated :: invoice :: {}", newInvoice.toString());
             responseObserver.onNext(newInvoice);
         } else {
             responseObserver.onNext(null);
