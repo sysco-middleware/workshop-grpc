@@ -60,3 +60,17 @@ protobuf {
     }
   }
 }
+
+// task to run server
+task(runServer, dependsOn: 'classes', type: JavaExec) {
+  main = 'impl.GrpcServer'
+  classpath = sourceSets.main.runtimeClasspath
+}
+defaultTasks 'runServer'
+
+// task to run client
+task(runClient, dependsOn: 'classes', type: JavaExec) {
+  main = 'impl.GrpcClient'
+  classpath = sourceSets.main.runtimeClasspath
+}
+defaultTasks 'runClient'

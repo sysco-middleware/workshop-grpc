@@ -82,5 +82,28 @@ public static void main(String[] args) throws InterruptedException {
     channel.shutdown();
 }
 ```
-
+So far we have successfully complete our client and server implementations. Its time now to run the example and see if we get the intended result
 ## Running the examples
+To run the examples, we will add 2 custom tasks to build.gradle. This will help us to run the client and server from command line. 
+Open [build.gradle](../../build.gradle) and add below tasks at the end of file
+```
+// task to run server
+task(runServer, dependsOn: 'classes', type: JavaExec) {
+  main = 'impl.GrpcServer'
+  classpath = sourceSets.main.runtimeClasspath
+}
+defaultTasks 'runServer'
+
+// task to run client
+task(runClient, dependsOn: 'classes', type: JavaExec) {
+  main = 'impl.GrpcClient'
+  classpath = sourceSets.main.runtimeClasspath
+}
+defaultTasks 'runClient'
+``` 
+
+To successfully run the client follow the below steps.
+- git clone the repository if you have not done it already `git clone git@github.com:sysco-middleware/workshop-grpc.git`
+- build the project from project root `./gradlew build`
+- run the grpc server `./gradlew runServer`
+- open a different terminal and run `./gradlew runClient` from project root
