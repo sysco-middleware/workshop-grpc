@@ -106,4 +106,10 @@ To successfully run the client follow the below steps.
 - git clone the repository if you have not done it already `git clone git@github.com:sysco-middleware/workshop-grpc.git`
 - build the project from project root `./gradlew build`
 - run the grpc server `./gradlew runServer`
-- open a different terminal and run `./gradlew runClient` from project root
+- open another terminal and run `./gradlew runClient` from project root
+
+Checkout these screenshots below to run server
+![runServer](https://asciinema.org/a/hPqGXgW4geKu3qOeFVv4DyqKG)
+
+Checkout this screenshot to run client
+![runClient](https://asciinema.org/a/GP5NHZvios0aQYV1Hh69JTXA4)
