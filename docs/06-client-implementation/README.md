@@ -109,7 +109,8 @@ To successfully run the client follow the below steps.
 - open another terminal and run `./gradlew runClient` from project root
 
 Checkout these screenshots below to run server
-![runServer](https://asciinema.org/a/hPqGXgW4geKu3qOeFVv4DyqKG)
-<script src="https://asciinema.org/a/hPqGXgW4geKu3qOeFVv4DyqKG.js" id="asciicast-hPqGXgW4geKu3qOeFVv4DyqKG" async></script>
+[![asciicast](https://asciinema.org/a/hPqGXgW4geKu3qOeFVv4DyqKG.png)](https://asciinema.org/a/hPqGXgW4geKu3qOeFVv4DyqKG)
+
+
 Checkout this screenshot to run client
-![runClient](https://asciinema.org/a/GP5NHZvios0aQYV1Hh69JTXA4)
+[![asciicast](https://asciinema.org/a/GP5NHZvios0aQYV1Hh69JTXA4.png)](https://asciinema.org/a/GP5NHZvios0aQYV1Hh69JTXA4)
