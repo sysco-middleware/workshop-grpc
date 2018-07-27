@@ -1,4 +1,5 @@
 # Server implementation
+[HOME](../../README.md)
 
 The steps involved in implementing a server is split into 2 parts.
 - Implementing InvoiceService methods and provide a business logic.
@@ -39,7 +40,7 @@ The **InvoiceService** and the **methods** that we defined in the protobuf file 
 To implement these business methods we need to extend **InvoiceServiceImplBase** class and override its methods. We do that in class **InvoiceServiceImpl.java**. 
 Open [this](../../src/main/java/impl/InvoiceServiceImpl.java) file.
 
-Instead of connecting to a database or any other persistance storage, we make use of `Map<String,Invoice>` to store these values. We start with defining a field invoices as `Map<String,Invoice>` and add 5 random invoices to it.
+Instead of connecting to a database or any other persistance storage, we make use of `Map<String,Invoice>` to store these values. We start with defining a field store as `Map<String,Invoice>` and add 5 random invoices to it.
 ```
 private Map<String, Invoice> generateRandomInvoices() {
     Random r = new Random();
@@ -52,7 +53,7 @@ private Map<String, Invoice> generateRandomInvoices() {
 }
 ```
 
-create method
+_create method_ : Prepares an Invoice from request and adds it to the store.
 ```
 public void create(CreateRequest request, StreamObserver<Invoice> responseObserver) {
    final String id = UUID.randomUUID().toString();
@@ -67,7 +68,7 @@ public void create(CreateRequest request, StreamObserver<Invoice> responseObserv
    responseObserver.onCompleted();
 }
 ```
-get method
+_get method_ : Retrieves an Invoice by id.
 ```
 public void get(InvoiceRequest request, StreamObserver<Invoice> responseObserver) {
    if (store != null && !store.isEmpty()) {
@@ -80,7 +81,7 @@ public void get(InvoiceRequest request, StreamObserver<Invoice> responseObserver
    responseObserver.onCompleted();
 }
 ```
-delete method
+_delete method_ : Deletes an existing invoice by id
 ```
 public void delete(InvoiceRequest request, StreamObserver<DeleteResponse> responseObserver) {
     if (store != null && !store.isEmpty()) {
@@ -101,7 +102,7 @@ public void delete(InvoiceRequest request, StreamObserver<DeleteResponse> respon
 }
 ```
 
-update method
+_update method_ : Updates an Invoice. Only State and Amount can be updated.
 ```
 public void update(InvoiceOuterClass.UpdateRequest request, StreamObserver<Invoice> responseObserver) {
    if (store != null && !store.isEmpty()) {
@@ -109,8 +110,8 @@ public void update(InvoiceOuterClass.UpdateRequest request, StreamObserver<Invoi
        final Invoice newInvoice = Invoice.newBuilder().
               setAmount(request.getAmount()).
               setCustomerId(invoice.getCustomerId()).
-              setState(invoice.getState())
-              .setId(request.getId()).build();
+              setState(invoice.getState()).
+              setId(request.getId()).build();
        store.replace(request.getId(), newInvoice);
        responseObserver.onNext(newInvoice);
    } else {
@@ -119,7 +120,7 @@ public void update(InvoiceOuterClass.UpdateRequest request, StreamObserver<Invoi
    responseObserver.onCompleted();
 }
 ```
-list method
+_list method_ : Gets a list of invoices in store. An important point to note here is that protocol will not return a Collection of invoices. Instead it will stream each invoice in the store one at a time.
 ```
 public void list(Empty request, StreamObserver<Invoice> responseObserver) {
     store.forEach((k, v) -> responseObserver.onNext(v));
@@ -128,7 +129,7 @@ public void list(Empty request, StreamObserver<Invoice> responseObserver) {
 ```
 
 ### GrpcServer.java
-Here we add the implementation done in previous step as service and running a gRPC server to listen for requests from clients and return the service responses.
+Here we add the implementation done in previous step as service and run a gRPC server to listen for requests from clients and return the service responses.
 
 ```
 public class GrpcServer {
@@ -144,4 +145,4 @@ public class GrpcServer {
 }
 ```
 
-As you can see this bootstraps a server to listen to port 8080, adds InvoiceServiceImpl as service and starts the server.
+As you can see this bootstraps a server to listen to port 8080, adds InvoiceServiceImpl as service and starts the server. In the [Next](../06-client-implementation/README.md) section we will have a look at creating a gRPC client and calling methods on gRPC server.
