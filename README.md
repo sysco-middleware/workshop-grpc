@@ -7,7 +7,6 @@ This repository is setup to provide a basic understanding of the gRPC protocol a
 - Basic understanding of protocol buffers.
 - Code generation in gRPC projects.
 - Client-Server implementations.
-- Unit testing gRPC applications.
 
 ## Introduction
 
@@ -41,4 +40,3 @@ In this workshop we will work from scratch to develop a working prototype for an
 4. [Code generation from protobuf to java](./docs/04-code-generation/README.md)
 5. [Server implementation](./docs/05-server-implementation/README.md)
 6. [Client implementation](./docs/06-client-implementation/README.md)
-7. [Testing gRPC applications](./docs/07-testing-grpc-services/README.md)
