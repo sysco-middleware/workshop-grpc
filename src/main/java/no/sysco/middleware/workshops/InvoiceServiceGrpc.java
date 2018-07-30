@@ -1,24 +1,24 @@
 package no.sysco.middleware.workshops;
 
-import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.blockingUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
-import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
+import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.7.0)",
+    value = "by gRPC proto compiler (version 1.13.1)",
     comments = "Source: invoice.proto")
 public final class InvoiceServiceGrpc {
 
@@ -27,71 +27,140 @@ public final class InvoiceServiceGrpc {
   public static final String SERVICE_NAME = "InvoiceService";
 
   // Static method descriptors that strictly reflect the proto.
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest,
-      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> METHOD_CREATE =
-      io.grpc.MethodDescriptor.<no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "InvoiceService", "Create"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
-          .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Create"))
-          .build();
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest,
-      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> METHOD_GET =
-      io.grpc.MethodDescriptor.<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "InvoiceService", "Get"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
-          .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Get"))
-          .build();
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest,
-      no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse> METHOD_DELETE =
-      io.grpc.MethodDescriptor.<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest, no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "InvoiceService", "Delete"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse.getDefaultInstance()))
-          .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Delete"))
-          .build();
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest,
-      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> METHOD_UPDATE =
-      io.grpc.MethodDescriptor.<no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "InvoiceService", "Update"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
-          .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Update"))
-          .build();
-  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.google.protobuf.Empty,
-      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> METHOD_LIST =
-      io.grpc.MethodDescriptor.<com.google.protobuf.Empty, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-          .setFullMethodName(generateFullMethodName(
-              "InvoiceService", "List"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.google.protobuf.Empty.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
-          .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("List"))
-          .build();
+  private static volatile io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getCreateMethod;
+
+  public static io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getCreateMethod() {
+    io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getCreateMethod;
+    if ((getCreateMethod = InvoiceServiceGrpc.getCreateMethod) == null) {
+      synchronized (InvoiceServiceGrpc.class) {
+        if ((getCreateMethod = InvoiceServiceGrpc.getCreateMethod) == null) {
+          InvoiceServiceGrpc.getCreateMethod = getCreateMethod = 
+              io.grpc.MethodDescriptor.<no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "InvoiceService", "Create"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
+                  .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Create"))
+                  .build();
+          }
+        }
+     }
+     return getCreateMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getGetMethod;
+
+  public static io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getGetMethod() {
+    io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getGetMethod;
+    if ((getGetMethod = InvoiceServiceGrpc.getGetMethod) == null) {
+      synchronized (InvoiceServiceGrpc.class) {
+        if ((getGetMethod = InvoiceServiceGrpc.getGetMethod) == null) {
+          InvoiceServiceGrpc.getGetMethod = getGetMethod = 
+              io.grpc.MethodDescriptor.<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "InvoiceService", "Get"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
+                  .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Get"))
+                  .build();
+          }
+        }
+     }
+     return getGetMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest,
+      no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse> getDeleteMethod;
+
+  public static io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest,
+      no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse> getDeleteMethod() {
+    io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest, no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse> getDeleteMethod;
+    if ((getDeleteMethod = InvoiceServiceGrpc.getDeleteMethod) == null) {
+      synchronized (InvoiceServiceGrpc.class) {
+        if ((getDeleteMethod = InvoiceServiceGrpc.getDeleteMethod) == null) {
+          InvoiceServiceGrpc.getDeleteMethod = getDeleteMethod = 
+              io.grpc.MethodDescriptor.<no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest, no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "InvoiceService", "Delete"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Delete"))
+                  .build();
+          }
+        }
+     }
+     return getDeleteMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getUpdateMethod;
+
+  public static io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getUpdateMethod() {
+    io.grpc.MethodDescriptor<no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getUpdateMethod;
+    if ((getUpdateMethod = InvoiceServiceGrpc.getUpdateMethod) == null) {
+      synchronized (InvoiceServiceGrpc.class) {
+        if ((getUpdateMethod = InvoiceServiceGrpc.getUpdateMethod) == null) {
+          InvoiceServiceGrpc.getUpdateMethod = getUpdateMethod = 
+              io.grpc.MethodDescriptor.<no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "InvoiceService", "Update"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
+                  .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("Update"))
+                  .build();
+          }
+        }
+     }
+     return getUpdateMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getListMethod;
+
+  public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getListMethod() {
+    io.grpc.MethodDescriptor<com.google.protobuf.Empty, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> getListMethod;
+    if ((getListMethod = InvoiceServiceGrpc.getListMethod) == null) {
+      synchronized (InvoiceServiceGrpc.class) {
+        if ((getListMethod = InvoiceServiceGrpc.getListMethod) == null) {
+          InvoiceServiceGrpc.getListMethod = getListMethod = 
+              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "InvoiceService", "List"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  no.sysco.middleware.workshops.InvoiceOuterClass.Invoice.getDefaultInstance()))
+                  .setSchemaDescriptor(new InvoiceServiceMethodDescriptorSupplier("List"))
+                  .build();
+          }
+        }
+     }
+     return getListMethod;
+  }
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -124,69 +193,69 @@ public final class InvoiceServiceGrpc {
      */
     public void create(no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_CREATE, responseObserver);
+      asyncUnimplementedUnaryCall(getCreateMethod(), responseObserver);
     }
 
     /**
      */
     public void get(no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_GET, responseObserver);
+      asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
     }
 
     /**
      */
     public void delete(no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_DELETE, responseObserver);
+      asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
     }
 
     /**
      */
     public void update(no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_UPDATE, responseObserver);
+      asyncUnimplementedUnaryCall(getUpdateMethod(), responseObserver);
     }
 
     /**
      */
     public void list(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_LIST, responseObserver);
+      asyncUnimplementedUnaryCall(getListMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            METHOD_CREATE,
+            getCreateMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest,
                 no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>(
                   this, METHODID_CREATE)))
           .addMethod(
-            METHOD_GET,
+            getGetMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest,
                 no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>(
                   this, METHODID_GET)))
           .addMethod(
-            METHOD_DELETE,
+            getDeleteMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest,
                 no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse>(
                   this, METHODID_DELETE)))
           .addMethod(
-            METHOD_UPDATE,
+            getUpdateMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest,
                 no.sysco.middleware.workshops.InvoiceOuterClass.Invoice>(
                   this, METHODID_UPDATE)))
           .addMethod(
-            METHOD_LIST,
+            getListMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
                 com.google.protobuf.Empty,
@@ -219,7 +288,7 @@ public final class InvoiceServiceGrpc {
     public void create(no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_CREATE, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getCreateMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -227,7 +296,7 @@ public final class InvoiceServiceGrpc {
     public void get(no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_GET, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -235,7 +304,7 @@ public final class InvoiceServiceGrpc {
     public void delete(no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_DELETE, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getDeleteMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -243,7 +312,7 @@ public final class InvoiceServiceGrpc {
     public void update(no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_UPDATE, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getUpdateMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -251,7 +320,7 @@ public final class InvoiceServiceGrpc {
     public void list(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> responseObserver) {
       asyncServerStreamingCall(
-          getChannel().newCall(METHOD_LIST, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getListMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -277,28 +346,28 @@ public final class InvoiceServiceGrpc {
      */
     public no.sysco.middleware.workshops.InvoiceOuterClass.Invoice create(no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_CREATE, getCallOptions(), request);
+          getChannel(), getCreateMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public no.sysco.middleware.workshops.InvoiceOuterClass.Invoice get(no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_GET, getCallOptions(), request);
+          getChannel(), getGetMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse delete(no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_DELETE, getCallOptions(), request);
+          getChannel(), getDeleteMethod(), getCallOptions(), request);
     }
 
     /**
      */
     public no.sysco.middleware.workshops.InvoiceOuterClass.Invoice update(no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_UPDATE, getCallOptions(), request);
+          getChannel(), getUpdateMethod(), getCallOptions(), request);
     }
 
     /**
@@ -306,7 +375,7 @@ public final class InvoiceServiceGrpc {
     public java.util.Iterator<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> list(
         com.google.protobuf.Empty request) {
       return blockingServerStreamingCall(
-          getChannel(), METHOD_LIST, getCallOptions(), request);
+          getChannel(), getListMethod(), getCallOptions(), request);
     }
   }
 
@@ -333,7 +402,7 @@ public final class InvoiceServiceGrpc {
     public com.google.common.util.concurrent.ListenableFuture<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> create(
         no.sysco.middleware.workshops.InvoiceOuterClass.CreateRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_CREATE, getCallOptions()), request);
+          getChannel().newCall(getCreateMethod(), getCallOptions()), request);
     }
 
     /**
@@ -341,7 +410,7 @@ public final class InvoiceServiceGrpc {
     public com.google.common.util.concurrent.ListenableFuture<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> get(
         no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_GET, getCallOptions()), request);
+          getChannel().newCall(getGetMethod(), getCallOptions()), request);
     }
 
     /**
@@ -349,7 +418,7 @@ public final class InvoiceServiceGrpc {
     public com.google.common.util.concurrent.ListenableFuture<no.sysco.middleware.workshops.InvoiceOuterClass.DeleteResponse> delete(
         no.sysco.middleware.workshops.InvoiceOuterClass.InvoiceRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_DELETE, getCallOptions()), request);
+          getChannel().newCall(getDeleteMethod(), getCallOptions()), request);
     }
 
     /**
@@ -357,7 +426,7 @@ public final class InvoiceServiceGrpc {
     public com.google.common.util.concurrent.ListenableFuture<no.sysco.middleware.workshops.InvoiceOuterClass.Invoice> update(
         no.sysco.middleware.workshops.InvoiceOuterClass.UpdateRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_UPDATE, getCallOptions()), request);
+          getChannel().newCall(getUpdateMethod(), getCallOptions()), request);
     }
   }
 
@@ -465,11 +534,11 @@ public final class InvoiceServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new InvoiceServiceFileDescriptorSupplier())
-              .addMethod(METHOD_CREATE)
-              .addMethod(METHOD_GET)
-              .addMethod(METHOD_DELETE)
-              .addMethod(METHOD_UPDATE)
-              .addMethod(METHOD_LIST)
+              .addMethod(getCreateMethod())
+              .addMethod(getGetMethod())
+              .addMethod(getDeleteMethod())
+              .addMethod(getUpdateMethod())
+              .addMethod(getListMethod())
               .build();
         }
       }

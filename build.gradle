@@ -1,5 +1,5 @@
 // variables
-ext { grpcVersion = '1.7.0' }
+ext { grpcVersion = '1.13.1' }
 
 // project coordinates
 group = "no.sysco.middleware.workshops"

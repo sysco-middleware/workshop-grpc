@@ -32,7 +32,7 @@ All our configuration are done in [build.gradle](../../build.gradle) shipped wit
 We start with defining a variable grpcVersion, we will reuse this later while defining project dependencies. Next, we define the project coordinates. These will be useful when we want to distribute the executable via artifactory for example
 ```groovy
 // variables
-ext { grpcVersion = '1.7.0' }
+ext { grpcVersion = '1.13.1' }
 
 // project coordinates
 group = "no.sysco.middleware.workshops"

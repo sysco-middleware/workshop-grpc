@@ -3,6 +3,7 @@
 
 Now that we have configured gradle and provided our payload and service definitions, its time to generate code from our .proto files. If you have followed the instructions in the last 2 sections, generating code is piece of cake.
 
+
 Follow below instructions to generate code from protobuf.
 - Clone this repository, if you have not done it already.
 - Open terminal and go to the project root.
@@ -11,5 +12,7 @@ Follow below instructions to generate code from protobuf.
 - Go to the directory `<root>/src/main/java/no/sysco/middleware/workshops`, you should see 2 newly generated files **InvoiceOuterClass.java** and **InvoiceServiceGrpc.java**
 - **InvoiceOuterClass.java** contains java code for our payload. All the messages and enums defined in **invoice.proto** will be available in this class.
 - **InvoiceServiceGrpc.java** contains java code representing Service and Methods defined in proto file. It also contains means to implement the InvoiceService on the server and generate stubs at client to call rpc methods.
+
+**Please note** that generated files `InvoiceOuterClass.java` and `InvoiceServiceGrpc.java` that were generated while building this example are committed to the codebase. So don't be alarmed. If you change the message or service definition in invoice.proto and `./gradlew build`, you will see a new version of the files.
 
 We will discuss more on how to use these generated classes in our code in the [next](../05-server-implementation/README.md) sections. 
