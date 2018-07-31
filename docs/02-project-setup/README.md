@@ -20,8 +20,7 @@ We start with creating a simple project structure.
 - All our java code will be available under `src/main/java`.
 - We will define our protobuf description under `src/main/proto`.
 - All generated code will be placed under `src/main/java/no/sysco/middleware/workshops`. We will configure gradle to do this automatically for us in build.gradle configurations
-- All custom implementation for client-server wil be under `src/main/java/impl`
-- All test cases will be under `src/test/java`
+- All custom implementation for client-server wil be under `/src/main/java/no/sysco/middleware/workshops/impl`
 
 ![ProjectStructure](../images/ProjectStr.png)
 

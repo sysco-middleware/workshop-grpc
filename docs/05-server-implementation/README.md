@@ -5,7 +5,7 @@ The steps involved in implementing a server is split into 2 parts.
 - Implementing InvoiceService methods and provide a business logic.
 - Bootstrap gRPC server.
 
-We have already implemented these for you in `src/main/java/impl` package. In this package you will see three files.
+We have already implemented these for you in `no.sysco.middleware.workshops.impl` package. In this package you will see three files.
 - GrpcClient.java : We will discuss this in [next](../06-client-implementation/README.md) section.
 - GrpcServiceImpl.java : This implements the service methods and provides the core business logic.
 - GrpcServer.java : This file bootstraps the grpc server, add the service implementation to the server.

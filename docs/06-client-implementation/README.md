@@ -10,7 +10,7 @@ To keep the example simple, we will perform below operation in sequence to show 
 - Delete the invoice.
 - List all the invoices in the store.
 
-Like other examples, we have already implemented these for you. Open [file](../../src/main/java/impl/GrpcClient.java):
+Like other examples, we have already implemented these for you. Open [file](../../src/main/java/no/sysco/middleware/workshops/impl/GrpcClient.java):
 
 _create an invoice_
 ```
@@ -89,14 +89,14 @@ Open [build.gradle](../../build.gradle) and add below tasks at the end of file
 ```
 // task to run server
 task(runServer, dependsOn: 'classes', type: JavaExec) {
-  main = 'impl.GrpcServer'
+  main = 'no.sysco.middleware.workshops.impl.GrpcServer'
   classpath = sourceSets.main.runtimeClasspath
 }
 defaultTasks 'runServer'
 
 // task to run client
 task(runClient, dependsOn: 'classes', type: JavaExec) {
-  main = 'impl.GrpcClient'
+  main = ''no.sysco.middleware.workshops.impl.GrpcClient'
   classpath = sourceSets.main.runtimeClasspath
 }
 defaultTasks 'runClient'
