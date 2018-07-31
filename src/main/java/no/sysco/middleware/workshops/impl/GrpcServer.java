@@ -1,4 +1,4 @@
-package impl;
+package no.sysco.middleware.workshops.impl;
 
 import io.grpc.ServerBuilder;
 

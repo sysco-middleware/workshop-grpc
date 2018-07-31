@@ -1,4 +1,4 @@
-package impl;
+package no.sysco.middleware.workshops.impl;
 
 import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
