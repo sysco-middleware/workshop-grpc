@@ -1,5 +1,5 @@
-# [WIP] workshop-grpc
-This repository is setup to provide a basic understanding of the gRPC protocol and introduce the steps required to setup a project. This repository also works as a complimentary code repository for [Sysco-Blog](adfasdf)
+# workshop-grpc
+This repository is setup to provide a basic understanding of the gRPC protocol and introduce the steps required to setup a project. This repository also works as a complimentary code repository for the blog post [GettingStartedWithProtobufGrpc](http://blog.sysco.no/grpc/GettingStartedWithProtobufGrpc/)
 
 ## Goals
 - Introduction to gRPC protocol.
